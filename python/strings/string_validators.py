@@ -1,0 +1,6 @@
+x = raw_input()
+print any([c.isalnum() for c in x])
+print any([c.isalpha() for c in x])
+print any([c.isdigit() for c in x])
+print any([c.islower() for c in x])
+print any([c.isupper() for c in x])
