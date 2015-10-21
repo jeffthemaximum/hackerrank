@@ -24,7 +24,7 @@ class Node {
 		}
 		
 
-		Node prev, curr, newNode, next;
+		Node curr, newNode, next;
 		newNode = new Node();
 		newNode.data = data;
 		
@@ -74,6 +74,61 @@ class Node {
 
 	}
 	
+	static void reversePrint(Node head) {
+		if (head.next == null) {
+			System.out.println(head.data);
+		}
+		
+		//reverse list
+		Node prev, curr, next;
+		prev = null;
+		curr = head;
+		while (curr != null) {
+			next = curr.next;
+			curr.next = prev;
+			prev = curr;
+			curr = next;
+		}
+		//print list
+		while (prev != null) {
+			System.out.println(prev.data);
+			prev = prev.next;
+		}
+	}
+	
+	/*
+	  Compare two linked lists A and B
+	  Return 1 if they are identical and 0 if they are not. 
+	  Node is defined as 
+	  class Node {
+	     int data;
+	     Node next;
+	  }
+	*/
+	int CompareLists(Node headA, Node headB) {
+	    if (headA == null && headB == null) {
+	    	return 1;
+	    }
+	    
+	    //check that all data are equal
+	    while (headA != null && headB != null) {
+	    	if (headA.data != headB.data) {
+	    		return 0;
+	    	}
+	    	headA = headA.next;
+	    	headB = headB.next;
+	    }
+	    
+	    //check that lengths are equal
+	    if (headA != null || headB != null) {
+	    	return 0;
+	    }
+	    
+	    return 1;
+	    
+	  
+	}
+	
 	public static void main(String[] args) {
 		Node head = new Node();
 		head.data = 0;
@@ -82,8 +137,10 @@ class Node {
 		head.appendToTail(3);
 		head.appendToTail(4);
 		head.appendToTail(5);
-		head = InsertNth(head, 7, 2);
+		//head = InsertNth(head, 7, 2);
+		reversePrint(head);
 	}
+	
 }
 
 public class linked_list {
