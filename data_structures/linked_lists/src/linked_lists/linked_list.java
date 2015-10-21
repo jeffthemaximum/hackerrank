@@ -50,6 +50,30 @@ class Node {
 		
 	}
 	
+	public static Node deleteNode(Node head, int position) {
+		if (head == null) {
+			return null;
+		}
+		
+		Node n = head;
+		if (position == 0) {
+			return head.next;
+		}
+		
+		int count = 0;
+		
+		while (n.next != null) {
+			if (count == (position - 1)) {
+				n.next = n.next.next;
+				return head;
+			}
+			n = n.next;
+			count += 1;
+		}
+		return head;
+
+	}
+	
 	public static void main(String[] args) {
 		Node head = new Node();
 		head.data = 0;
